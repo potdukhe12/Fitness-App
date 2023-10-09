@@ -1,0 +1,32 @@
+*** To Run Program ***
+npx react-native run-android
+
+
+*** To Create Program ***
+npx react-native init FitnessAppUI --version 0.70
+npm install @react-navigation/native
+npm install react-native-screens react-native-safe-area-context
+npm install @react-navigation/native-stack
+npm install react-native-input-secure-text
+npm install @react-navigation/drawer
+npm install --save react-native-video
+npm install react-native-vector-icons/FontAwesome5
+
+*** Others ***
+
+
+
+*** To connect firebase ***
+npm install firebase
+firebase.js
+useAuth.js
+
+
+
+
+
+
+
+
+
+
