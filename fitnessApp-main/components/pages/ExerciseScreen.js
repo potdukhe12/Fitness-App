@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Dimensions } from
 import BtnMenu from '../others/BtnMenu2';
 import Background from '../others/Background2';
 import { purple } from '../others/Constants';
-import MenuModal from '../others/MenuModal';
+import MenuModal from '../modals/MenuModal';
 import style from '../others/style2';
 import dumbbellExercisesMen from '../exerciseData/dumbbellExercisesMen';
 import gymExercisesMen from '../exerciseData/gymExercisesMen';

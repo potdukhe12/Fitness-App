@@ -12,11 +12,11 @@ export default function Btn({ btnLabel, textColor, Press }) {
       <LinearGradient
         colors={gradientColors}
         start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 0 }}
+        end={{ x: 1, y: 1 }}
         style={{
           borderRadius: 100,
           overflow: 'hidden', // Hide the gradient overflow
-          elevation: 3, // Add shadow
+          elevation: 5, // Add shadow
           marginBottom: 13,
           width: Dimensions.get('window').width * 0.5,
           paddingVertical: 5,

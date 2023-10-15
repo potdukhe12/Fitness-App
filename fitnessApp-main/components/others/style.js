@@ -1,7 +1,6 @@
 import { Dimensions, StyleSheet } from "react-native"
 import { purple } from "./Constants"
 
-{/* 3. External Styling */}
 export default styles=StyleSheet.create({
   screenStyle: {
     padding: 40,
@@ -20,6 +19,15 @@ export default styles=StyleSheet.create({
     width: Dimensions.get('window').width*0.65,
     marginBottom: 10,
     alignContent: 'center',
+  },
+  scrollStyle2: {
+    // flex: 1, 
+    height: Dimensions.get('window').height*0.65,
+    width: Dimensions.get('window').width*0.65,
+    paddingVertical: Dimensions.get('window').height*0.1,
+    // marginBottom: 10,
+    // alignContent: 'center',
+    // backgroundColor: 'white',
     // alignItems: 'center',
   },
   menuButton: {
@@ -30,7 +38,7 @@ export default styles=StyleSheet.create({
     backgroundColor: 'white',
     borderRadius: 10,
     paddingVertical: 5,
-    paddingHorizontal: 9,
+    paddingHorizontal: 11,
   },
   menuButtonText: {
     color: purple,

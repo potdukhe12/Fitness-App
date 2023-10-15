@@ -5,7 +5,7 @@ import BtnMenu from '../others/BtnMenu'
 import Background from '../others/Background2'
 import { purple, white } from '../others/Constants'
 import Video from 'react-native-video';
-import MenuModal from '../others/MenuModal';
+import MenuModal from '../modals/MenuModal';
 import InfoModal from '../modals/InfoModal';
 import style from '../others/style2';
 import FastImage from 'react-native-fast-image'

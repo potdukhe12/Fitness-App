@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Image, ScrollView, Dimensions
 import Background from '../others/Background2';
 import { purple } from '../others/Constants';
 import BtnMenu from '../others/BtnMenu2';
-import MenuModal from '../others/MenuModal';
+import MenuModal from '../modals/MenuModal';
 import style from '../others/style';
 
 export default function GenderScreen(props) {

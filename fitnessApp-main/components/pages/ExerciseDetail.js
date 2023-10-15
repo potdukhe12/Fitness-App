@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, Modal, StyleSheet, ScrollView, Dimensions
 import React, { useEffect, useState } from 'react'
 import Background from '../others/Background2'
 import { purple, white } from '../others/Constants'
-import MenuModal from '../others/MenuModal';
+import MenuModal from '../modals/MenuModal';
 import InfoModal from '../modals/InfoModal';
 import style from '../others/style2';
 import FastImage from 'react-native-fast-image'

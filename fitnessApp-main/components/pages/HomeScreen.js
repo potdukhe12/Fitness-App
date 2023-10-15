@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from
 import BtnMenu from '../others/BtnMenu';
 import Background from '../others/Background2';
 import { purple } from '../others/Constants';
-import MenuModal from '../others/MenuModal';
+import MenuModal from '../modals/MenuModal';
 import style from '../others/style';
 
 export default function HomeScreen(props) {
@@ -37,18 +37,17 @@ export default function HomeScreen(props) {
         <Text style={style.title}>
           Select Exercise Type : 
         </Text>
-        
-        <ScrollView style={style.scrollStyle}
+        <ScrollView style={style.scrollStyle2}
                     showsVerticalScrollIndicator={false} >
-          {exerciseTypeOptions.map((option) => (
-            <BtnMenu
-              key={option}
-              bgColor={option === selectedExerciseType ? 'green' : purple}
-              textColor="white"
-              btnLabel={option}
-              Press={() => handleExerciseTypeSelection(option)}
-            />
-          ))}
+            {exerciseTypeOptions.map((option) => (
+              <BtnMenu
+                key={option}
+                bgColor={option === selectedExerciseType ? 'green' : purple}
+                textColor="white"
+                btnLabel={option}
+                Press={() => handleExerciseTypeSelection(option)}
+              />
+            ))}
         </ScrollView>
       </View>
 
@@ -58,24 +57,5 @@ export default function HomeScreen(props) {
   );
 }
 
-// const styles = StyleSheet.create({
-//   screenStyle: {
-//     padding: 40,
-//     width: Dimensions.get('window').width,
-//   },
-//   menuButton: {
-//     position: 'absolute',
-//     top: 10,
-//     right: 10,
-//     zIndex: 1,
-//     backgroundColor: 'white',
-//     borderRadius: 10,
-//     paddingVertical: 8,
-//     paddingHorizontal: 12,
-//   },
-//   menuButtonText: {
-//     color: purple,
-//     fontSize: 22,
-//     transform: [{ rotate: '90deg' }],
-//   },
-// });
+
+

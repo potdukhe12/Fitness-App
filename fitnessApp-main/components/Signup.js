@@ -5,7 +5,7 @@ import { purple, white } from './others/Constants';
 import Field from './others/Field';
 import Btn from './others/Btn';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './firebase';
+import { auth } from '../config/firebase';
 
 const Signup = (props) => {
     const [firstName, setFirstName] = useState('');
@@ -29,9 +29,12 @@ const Signup = (props) => {
       } else if (password !== confirmPassword) {
         setValidationError('Passwords do not match.');
       } else {
-        // Valid form, proceed with signup
-        alert("Account created");
-        props.navigation.navigate('Login');
+        try{
+          await createUserWithEmailAndPassword(auth, email,password);
+          alert('Account Created.');
+        }catch(err){
+          console.log('Signup error: ' + err.message);
+        }
       }
     };
   
@@ -42,13 +45,13 @@ const Signup = (props) => {
             <Text style={styles.registerText}>Register</Text>
             <View style={styles.formContainer}>
               <Text style={styles.formHeaderText}>Create a new account</Text>
+              {validationError ? <Text style={styles.errorText}>{validationError}</Text> : null}
               <Field placeholder="First Name" value={firstName} onChangeText={setFirstName} />
               <Field placeholder="Last Name" value={lastName} onChangeText={setLastName} />
               <Field placeholder="Email Address" keyboardType="email-address" value={email} onChangeText={setEmail} />
               <Field placeholder="Contact Number" keyboardType="number" value={contactNumber} onChangeText={setContactNumber} />
               <Field placeholder="Password" secureTextEntry={true} value={password} onChangeText={setPassword} />
               <Field placeholder="Confirm Password" secureTextEntry={true} value={confirmPassword} onChangeText={setConfirmPassword} />
-              {validationError ? <Text style={styles.errorText}>{validationError}</Text> : null}
               <Text></Text>
               <Btn
                 textColor={white}
@@ -86,7 +89,7 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     backgroundColor: 'white',
-    height: 920,
+    height: 1050,
     width: 393,
     borderTopLeftRadius: 60,
     borderTopRightRadius: 60,

@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from
 import BtnMenu from '../others/BtnMenu';
 import Background from '../others/Background2';
 import { purple } from '../others/Constants';
-import MenuModal from '../others/MenuModal';
+import MenuModal from '../modals/MenuModal';
 import style from '../others/style';
 
 export default function ModeScreen(props) {
@@ -37,7 +37,7 @@ export default function ModeScreen(props) {
           Select Mode :
         </Text>
 
-        <ScrollView style={style.scrollStyle}
+        <ScrollView style={style.scrollStyle2}
                     showsVerticalScrollIndicator={false} >
             {modeOptions.map((option) => (
             <BtnMenu

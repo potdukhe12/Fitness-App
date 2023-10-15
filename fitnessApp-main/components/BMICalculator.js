@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, TextInput, StyleSheet, Modal } from 'react-native';
 import { purple, white } from './others/Constants';
-import MenuModal from './others/MenuModal';
+import MenuModal from './modals/MenuModal';
 import Background2 from './others/Background2';
 
 const BMICalculator = (props) => {

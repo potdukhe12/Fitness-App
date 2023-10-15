@@ -1,57 +1,71 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Dimensions, ScrollView } from 'react-native';
 import Background from './others/Background2';
 import { purple, white } from './others/Constants';
 import Field from './others/Field';
 import Btn from './others/Btn';
 import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../config/firebase';
 
 const Login = (props) => {
 
-  // const navigation = useNavigation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [validationError, setValidationError] = useState('');
 
   const handleSubmit = async() =>{
+    setValidationError('');
     if(email && password) {
       try{
         await signInWithEmailAndPassword(auth, email, password);
+        alert('Logged In');
       }catch(err){
-          console.log('Login error: ', err.message );
+          setValidationError('Login error : ' + err.message);
       }
+    }
+    else {
+      setValidationError('Please fill out all fields.');
     }
   } 
 
   return (
     <Background>
-      <View style={styles.container}>
-        <Text style={styles.title}>Login</Text>
-        <View style={styles.formContainer}>
-          <Text style={styles.welcomeText}>Welcome Back</Text>
-          <Text style={styles.loginDescription}>Login to your account</Text>
-          <Field placeholder="Email" keyboardType={'email-address'} value={email} onChangeText={value => setEmail(value)} />
-          <Field placeholder="Password" secureTextEntry={true} value={password} onChangeText={value=>setPassword(value)} />
-          <TouchableOpacity style={styles.forgotPassword}
-                            onPress={() => { alert('Forgot Password?'); }} >
-            <Text style={styles.forgotPasswordText}>Forgot Password ?</Text>
-          </TouchableOpacity>
-          <Btn textColor={white} bgColor={purple} btnLabel="Login"
-            Press={() => { alert('Logged In');
-                           props.navigation.navigate('GenderScreen'); }}
-          />
-          <View style={styles.signupContainer}>
-            <Text style={styles.signupText}>Don't have an account ?</Text>
-            <TouchableOpacity onPress={() => props.navigation.navigate('Signup')}>
-              <Text style={styles.signupLink}>Signup</Text>
+      <ScrollView style={styles.scrollView}>
+        <View style={styles.container}>
+          <Text style={styles.title}>Login</Text>
+          <View style={styles.formContainer}>
+            <Text style={styles.welcomeText}>Welcome Back</Text>
+            <Text style={styles.loginDescription}>Login to your account</Text>
+            <Text style={styles.errorText}>
+                {validationError ? validationError : null}
+            </Text>
+            <Field placeholder="Email" keyboardType={'email-address'} value={email} onChangeText={value => setEmail(value)} />
+            <Field placeholder="Password" secureTextEntry={true} value={password} onChangeText={value=>setPassword(value)} />
+            <TouchableOpacity style={styles.forgotPassword}
+                              onPress={() => { alert('Forgot Password?'); }} >
+              <Text style={styles.forgotPasswordText}>Forgot Password ?</Text>
             </TouchableOpacity>
+
+            <Btn textColor={white} bgColor={purple} btnLabel="Login"
+                Press={handleSubmit} />
+                
+            <View style={styles.signupContainer}>
+              <Text style={styles.signupText}>Don't have an account ?</Text>
+              <TouchableOpacity onPress={() => props.navigation.navigate('SignUp')}>
+                <Text style={styles.signupLink}>Signup</Text>
+              </TouchableOpacity>
+            </View>
           </View>
         </View>
-      </View>
+      </ScrollView>
     </Background>
   );
 };
 
 const styles = StyleSheet.create({
+  scrollView: {
+    height: Dimensions.get('window').height * 1.2,
+  },
   container: {
     alignItems: 'center',
     width: Dimensions.get('window').width,
@@ -64,7 +78,7 @@ const styles = StyleSheet.create({
   },
   formContainer: {
     backgroundColor: '#FFFFFF',
-    height: 720,
+    height: 1000,
     // width: 393,
     width: Dimensions.get('window').width*0.95,
     borderTopLeftRadius: 60,
@@ -81,7 +95,7 @@ const styles = StyleSheet.create({
     color: 'grey',
     fontSize: 19,
     fontWeight: 'bold',
-    marginBottom: 30,
+    marginBottom: 20,
   },
   forgotPassword: {
     alignItems: 'flex-end',
@@ -105,8 +119,13 @@ const styles = StyleSheet.create({
   signupLink: {
     color: purple,
     fontWeight: 'bold',
-    marginBottom: 100,
     fontSize: 16,
+  },
+  errorText: {
+    color: 'red',
+    fontSize: 16,
+    marginVertical: 10,
+    marginHorizontal: 40,
   },
 });
 

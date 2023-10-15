@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { View, Text, Switch, TouchableOpacity, StyleSheet, Modal } from 'react-native';
 import { purple } from './others/Constants';
-import MenuModal from './others/MenuModal';
+import MenuModal from './modals/MenuModal';
+import { signOut } from 'firebase/auth';
+import { auth } from '../config/firebase';
 
 const Settings = (props) => {
   const [pushNotificationEnabled, setPushNotificationEnabled] = useState(true);
@@ -15,6 +17,10 @@ const Settings = (props) => {
   const toggleMenu = () => {
     setMenuVisible(!menuVisible);
   };
+
+  const handleLogout = async() =>{
+    await signOut(auth);
+  }
 
   return (
     <View style={styles.container}>
@@ -47,10 +53,7 @@ const Settings = (props) => {
         <Text style={{ fontSize: 20 }}>About Us</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={styles.logoutButton} onPress={() => {
-        props.navigation.navigate("Home")
-        alert("You have logged out");
-      }}>
+      <TouchableOpacity style={styles.logoutButton} onPress={handleLogout}>
         <Text style={styles.logoutText}>Logout</Text>
       </TouchableOpacity>
 
