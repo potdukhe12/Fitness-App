@@ -14,6 +14,14 @@ export default styles=StyleSheet.create({
     alignSelf: 'flex-start',
     fontWeight: 'bold',
   },
+  title2: {
+    color: purple, 
+    fontSize: 40, 
+    marginTop: 30,
+    marginBottom: 50,
+    alignSelf: 'flex-start',
+    fontWeight: 'bold',
+  },
   scrollStyle: {
     height: 580,
     width: Dimensions.get('window').width*0.65,

@@ -33,7 +33,7 @@ export default function ModeScreen(props) {
         <TouchableOpacity style={style.menuButton} onPress={toggleMenu}>
           <Text style={style.menuButtonText}>III</Text>
         </TouchableOpacity>
-        <Text style={style.title}>
+        <Text style={style.title2}>
           Select Mode :
         </Text>
 
